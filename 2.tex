@@ -1,0 +1,48 @@
+
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{placeins}
+\usetikzlibrary{3d,arrows,chains,matrix,positioning,scopes}
+
+% ∂®“Â \convconvreluX √¸¡Ó
+\newcommand{\convconvreluX}[9]{
+    \node[canvas is zy plane at x=#4] (#1) at (#3) {\includegraphics[width=#6cm,height=#7cm]{#1}};
+    \node[anchor=north] at (#1.south) {#9};
+}
+
+\begin{document}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+
+\node[canvas is zy plane at x=0] (temp) at (-3,0,0) {\includegraphics[width=8cm,height=8cm]{test.png}};
+
+
+\convconvreluX{conv1}{256}{64}{(0,0,0)}{(0,0,0)}{2}{64}{64}{Conv1}
+
+
+\convconvreluX{conv2}{64}{64}{(1,0,0)}{(conv1-east)}{2}{64}{64}{Conv2}
+
+
+\convconvreluX{conv3}{64}{64}{(2,0,0)}{(conv2-east)}{2}{64}{64}{Conv3}
+
+
+\convconvreluX{conv4}{64}{64}{(3,0,0)}{(conv3-east)}{2}{64}{64}{Conv4}
+
+
+\convconvreluX{conv5}{64}{64}{(4,0,0)}{(conv4-east)}{2}{64}{64}{Conv5}
+
+
+\convconvreluX{after_concat}{64}{64}{(5,0,0)}{(conv5-east)}{2}{64}{64}{After Concat}
+
+
+\convconvreluX{final}{64}{3}{(6,0,0)}{(after_concat-east)}{2}{64}{64}{Final Layer}
+
+
+\end{tikzpicture}
+\end{document}
+
+\end{tikzpicture}
+\caption{Neural Network Architecture}
+\end{figure}
+\end{document}
