@@ -1,0 +1,20 @@
+
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{placeins}
+\usetikzlibrary{3d,arrows,chains,matrix,positioning,scopes}
+
+\begin{document}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+
+\node[canvas is zy plane at x=0] (temp) at (-3,0,0) {\includegraphics[width=8cm,height=8cm]{cat.jpg}};
+
+
+\convconvreluX{conv1}{64}{64}{(0,0,0)}{(0,0,0)}{2}{64}{64}{conv1}
+
+\end{tikzpicture}
+\caption{Neural Network Architecture}
+\end{figure}
+\end{document}
